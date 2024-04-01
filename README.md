@@ -17,3 +17,4 @@ Code:
 Documents:
 - *EEGStateDiagram.png*: State diagram for EEG sites
 - *OverallStateDiagram.png*: State diagram for the overall system
+- *Use Case.pdf*: Use cases for the system
