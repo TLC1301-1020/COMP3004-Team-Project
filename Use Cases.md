@@ -38,12 +38,12 @@ The connection is reestablished, device back in session.
 - 4. Fail to reconnect in 5 mins.
 - 5. Device shuts down, session log deleted.
 *Extension*:
-2a. Connection fails but session is not paused.
-1. Device system control is not functioning.
-2. Signal not sent to session successfully.
-3a. Device reconnected, but the signal/alert is still on.
-1. Control system is not functioning.
-2. Reconnection not detected.
+2a: Connection fails but session is not paused.
+- Device system control is not functioning.
+- Signal not sent to session successfully.
+3a: Device reconnected, but the signal/alert is still on.
+- Control system is not functioning.
+- Reconnection not detected.
  
  
 ## DEVICE AT LOW BATTERY (10%)
