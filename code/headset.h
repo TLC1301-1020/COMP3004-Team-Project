@@ -16,6 +16,9 @@ class Headset
     // set
     void setHeadsetStatus(bool status);
 
+    //check EEG
+    int getEEGBaseline();
+
   private:
   // store information (may have some problems, only can have one egg array)
     bool headsetStatus = false;

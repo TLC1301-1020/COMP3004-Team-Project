@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ctime>
+#include <random>
 
 using namespace std;
 
@@ -16,24 +17,15 @@ class EEG
     // calculate HZ for treatment
     void createTreatmentHZ();
 
-    // create log
-    string createEEGLog();
+    //get brainwave frequency
+    int getFrequency();
 
-    //start
-    void startLog();
-
-    //pause
-    void pauseLog();
-
-    //stop
-    void pauseStop();
+    //
 
   private:
-    // input value
-    int inputHz;
-
-    // result value
-    int resultHZ;
+    //Frequency range
+    int frequencyMax;
+    int frequencyMin;
 
     // start time
     time_t startTime;

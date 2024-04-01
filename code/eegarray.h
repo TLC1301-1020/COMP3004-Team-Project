@@ -8,10 +8,10 @@ using namespace std;
 class EEGArray
 {
    public:
-    //constructure
+    //constructor
     EEGArray();
 
-    //deconstructure
+    //destructor
     ~EEGArray();
 
     // add eeg
