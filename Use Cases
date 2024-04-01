@@ -1,4 +1,5 @@
-1.1 NORMAL CASE
+#Use Cases
+##1.1 NORMAL CASE
 
 
 
@@ -22,7 +23,7 @@
 
 
 
-2.1 DEVICE CONNECTION LOST
+##2.1 DEVICE CONNECTION LOST
 *Use Case*:
 Device lost connection
 **Primary Actor**:
@@ -45,8 +46,8 @@ The connection is reestablished, device back in session.
 1.       Control system is not functioning.
 2.       Reconnection not detected.
  
- 
-2.2 DEVICE AT LOW BATTERY (10%)
+
+##2.2 DEVICE AT LOW BATTERY (10%)
 **Use Case**:
 Device at low battery
 **Primary Actor**:
@@ -70,7 +71,7 @@ Device displays an alert to the user, but the device can still function.
    	34a. Device battery within range but display message is not removed.
 1.       Device system not working properly.
 
-2.3 DEVICE RAN OUT OF BATTERY (0%)
+##2.3 DEVICE RAN OUT OF BATTERY (0%)
 **Use Case**:
 Device battery drained (0%)
 **Primary Actor**:
