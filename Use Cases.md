@@ -25,22 +25,28 @@
 ## DEVICE CONNECTION LOST
 *Use Case*: 
 Device lost connection
+
 *Primary Actor*: 
 Device
+
 *Precondition*: 
 Session started, but the contact is not initiated due to loss of connection.
+
 *Success guarantee*: 
 The connection is reestablished, device back in session.
+
 *Main Success Scenario*:
 - 1. User starts the new session, and the timer opens.
 - 2. Connection to the EEG sites fails, session pauses with red light flashes, and alert beeps.
 - 3. Device tries to reconnect.
 - 4. Fail to reconnect in 5 mins.
 - 5. Device shuts down, session log deleted.
+     
 *Extension*:
 2a: Connection fails but session is not paused.
 - Device system control is not functioning.
 - Signal not sent to session successfully.
+  
 3a: Device reconnected, but the signal/alert is still on.
 - Control system is not functioning.
 - Reconnection not detected.
