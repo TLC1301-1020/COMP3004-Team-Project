@@ -43,11 +43,11 @@ The connection is reestablished, device back in session.
 - 5. Device shuts down, session log deleted.
      
 *Extension*:
-2a: Connection fails but session is not paused.
+2a - Connection fails but session is not paused.
 - Device system control is not functioning.
 - Signal not sent to session successfully.
   
-3a: Device reconnected, but the signal/alert is still on.
+3a - Device reconnected, but the signal/alert is still on.
 - Control system is not functioning.
 - Reconnection not detected.
  
