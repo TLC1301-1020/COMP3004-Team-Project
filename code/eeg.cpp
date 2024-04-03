@@ -6,8 +6,8 @@
 EEG::EEG() {
     //Start the random seed, and set the minimum and maximum
     srand(time(0));
-    frequencyMax = 200;
-    frequencyMin = 20;
+    frequencyMax = 20;
+    frequencyMin = 1;
 }
 
 int EEG::getFrequency() {

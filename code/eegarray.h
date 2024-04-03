@@ -21,7 +21,7 @@ class EEGArray
     EEG* get(int index);
 
   private:
-    EEG** elements;
+    vector<EEG*> elements;
 
     //max is 21
     int size = 21;
