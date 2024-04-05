@@ -1,6 +1,11 @@
 #ifndef MAINOPERATE_H
 #define MAINOPERATE_H
 
+#include <QObject>
+#include <QString>
+#include <QTimer>
+#include <QDateTime>
+
 #include "headset.h"
 #include "logs.h"
 
@@ -26,7 +31,13 @@ class MainOperation
   //Time and date
   void timeAndDate();
 
+  //Run EEG function
+
+
   private:
+    QTimer timer;
+
+    int seconds;
 
 };
 
