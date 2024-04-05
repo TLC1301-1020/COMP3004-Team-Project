@@ -9,7 +9,6 @@ int main(int argc, char *argv[])
     Headset headset = Headset();
 
     cout << headset.getEEGBaseline() << endl;
-    headset.getEEGAverages();
     headset.applyTreatment();
     cout << headset.getEEGBaseline() << endl;
 

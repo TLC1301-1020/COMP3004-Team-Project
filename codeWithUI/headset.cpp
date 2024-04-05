@@ -12,10 +12,6 @@ Headset::~Headset() {
     delete eegs;
 }
 
-int Headset::getEEGFrequency(int index) {
-    EEG* temp = eegs->get(index);
-    return temp->getFrequency();
-}
 
 int Headset::getEEGBaseline() {
     int average = 0;
@@ -37,7 +33,6 @@ void Headset::getEEGAverages() {
     int average = 0;
     int total = 0;
     EEG* temp;
-    string averageLog;
 
     for(int i = 0; i < 21; i++) {
         temp = eegs->get(i);
@@ -45,23 +40,20 @@ void Headset::getEEGAverages() {
             total += temp->getFrequency();
         }
         average = total / 20;
-        averageLog += "EEG " + to_string(i+1) + " Average Frequency: " + to_string(average) + "\n";
+        cout << "EEG " << i << " average: " << average << endl;
+        average = 0;
         total = 0;
     }
-    cout << averageLog << endl;
 }
 
 
 void Headset::applyTreatment() {
     EEG* temp;
-    string tempLog;
 
     for(int i = 0; i < 21; i++) {
         temp = eegs->get(i);
         temp->createTreatmentHZ();
-        tempLog += "Applied treatment to EEG Location " + to_string(i+1) + "\n";
     }
-    cout << tempLog << endl;
 }
 
 

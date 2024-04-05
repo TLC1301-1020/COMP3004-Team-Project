@@ -25,9 +25,6 @@ class Headset
     //check EEG
     int getEEGBaseline();
 
-    //check EEG
-    int getEEGFrequency(int index);
-
   private:
   // store information (may have some problems, only can have one egg array)
     bool headsetStatus = false;
