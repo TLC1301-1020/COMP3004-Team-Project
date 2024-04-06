@@ -6,9 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>455</width>
+    <width>441</width>
     <height>576</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>10</horstretch>
+    <verstretch>10</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,7 +28,7 @@
    <widget class="QPushButton" name="Button_Menu">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>70</x>
       <y>120</y>
       <width>83</width>
       <height>25</height>
@@ -49,8 +60,8 @@
    <widget class="QProgressBar" name="Battery_Info">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>440</y>
+      <x>400</x>
+      <y>460</y>
       <width>31</width>
       <height>51</height>
      </rect>
@@ -71,14 +82,14 @@
    <widget class="QWidget" name="programViewWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>160</y>
-      <width>261</width>
-      <height>181</height>
+      <x>70</x>
+      <y>150</y>
+      <width>281</width>
+      <height>191</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(52, 101, 164);
+     <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(255, 255, 255);</string>
     </property>
     <widget class="QGraphicsView" name="List_View">
@@ -86,8 +97,8 @@ color: rgb(255, 255, 255);</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>261</width>
-       <height>181</height>
+       <width>281</width>
+       <height>191</height>
       </rect>
      </property>
      <property name="font">
@@ -212,13 +223,74 @@ color: rgb(255, 255, 255);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QListWidget" name="mainMenuListView">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>150</y>
+      <width>281</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>50</horstretch>
+      <verstretch>50</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-bottom-right-radius: 12px;
+border-bottom-left-radius: 12px;
+background-color: rgb(243, 243, 243);
+color: rgb(0, 0, 0);
+selection-background-color: rgb(122, 0, 0)</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="uniformItemSizes">
+     <bool>false</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+    <property name="selectionRectVisible">
+     <bool>false</bool>
+    </property>
+    <property name="currentRow">
+     <number>-1</number>
+    </property>
+   </widget>
+   <zorder>mainMenuListView</zorder>
+   <zorder>Button_Menu</zorder>
+   <zorder>Button_Stop</zorder>
+   <zorder>Battery_Info</zorder>
+   <zorder>Button_Pause</zorder>
+   <zorder>Button_Start</zorder>
+   <zorder>Light_Blue</zorder>
+   <zorder>Button_Direction_Up</zorder>
+   <zorder>Button_Direction_Down</zorder>
+   <zorder>Light_Green</zorder>
+   <zorder>Light_Red</zorder>
+   <zorder>programViewWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>455</width>
+     <width>441</width>
      <height>22</height>
     </rect>
    </property>
@@ -226,5 +298,54 @@ color: rgb(255, 255, 255);</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>Button_Menu</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>227</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Direction_Up</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>377</x>
+     <y>239</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Direction_Down</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>377</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

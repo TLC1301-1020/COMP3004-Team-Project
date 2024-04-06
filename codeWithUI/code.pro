@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Mainoperation.cpp \
     battery.cpp \
     eeg.cpp \
     eegarray.cpp \
@@ -16,18 +17,17 @@ SOURCES += \
     light.cpp \
     logs.cpp \
     main.cpp \
-    mainoperation.cpp \
     mainwindow.cpp \
     view.cpp
 
 HEADERS += \
+    Mainoperation.h \
     battery.h \
     eeg.h \
     eegarray.h \
     headset.h \
     light.h \
     logs.h \
-    mainoperation.h \
     mainwindow.h \
     view.h
 
