@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidget>
+
+// Class
+#include "Mainoperation.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,9 +21,21 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QListWidget *activeQListWidget;
+
+    MainOperation* operationMenu;
+    MainOperation* operationMenuOG;
+
+
+    void initializeMainMenu(MainOperation*);
+    void updateMenu(const QStringList);
+    void navigateUpMenu();
+    void navigateDownMenu();
 
 private slots:
-void showInfo();
+    // main menu
+    void navigateToMainMenu();
+
 
 };
 #endif // MAINWINDOW_H
