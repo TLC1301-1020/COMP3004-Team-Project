@@ -5,6 +5,7 @@
 #include <QString>
 #include <QTimer>
 #include <QDateTime>
+#include <QThread>
 
 #include "headset.h"
 #include "logs.h"
@@ -12,30 +13,52 @@
 class MainOperation
 {
   public:
-    //Constructor/Destructor
-    MainOperation();
-    ~MainOperation() {};
+        //Constructor/Destructor
+        MainOperation();
+        ~MainOperation();
 
-  // turn off
-  void turnOff();
+      // turn off
+      void turnOff();
 
-  // turn on
-  void turnOn();
+      // turn on
+      void turnOn();
 
-  //new session
-  void newSession();
+      //new session
+      void newSession();
 
-  // session log
-  void sessionLog();
+      // session log
+      void sessionLog();
 
-  //Time and date
-  void timeAndDate();
+      //Time and date
+      void timeAndDate();
 
-  //Run EEG function
+      //Run EEG treatment
+      void EEGTreatment(int i);
 
+    void startTimer();
+
+    int singleTreatment(int index);
+
+    //Get the EEG Baseline
+    int EEGBaseline();
+
+    //Get the average of one EEG location
+    int EEGAverage(int index);
+
+    //Get the logs
+    string getLogs();
+
+    //Add to logs
+    void addToLogs(string entry);
 
   private:
-    QTimer timer;
+    Headset* headset;
+
+    QTimer* timer;
+
+    QThread* thread;
+
+    Logs* log;
 
     int seconds;
 

@@ -1,6 +1,7 @@
 #ifndef HEADSET_H
 #define HEADSET_H
 
+#include <QObject>
 #include "eegarray.h"
 
 class Headset
@@ -20,7 +21,7 @@ class Headset
     void getEEGAverages();
 
     // apply the treatment to each EEG location
-    void applyTreatment();
+    void applyTreatment(int index);
 
     //check EEG
     int getEEGBaseline();

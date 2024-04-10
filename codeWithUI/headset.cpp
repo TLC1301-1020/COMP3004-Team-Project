@@ -52,16 +52,10 @@ void Headset::getEEGAverages() {
 }
 
 
-void Headset::applyTreatment() {
+void Headset::applyTreatment(int index) {
     EEG* temp;
-    string tempLog;
-
-    for(int i = 0; i < 21; i++) {
-        temp = eegs->get(i);
-        temp->createTreatmentHZ();
-        tempLog += "Applied treatment to EEG Location " + to_string(i+1) + "\n";
-    }
-    cout << tempLog << endl;
+    temp = eegs->get(index);
+    temp->createTreatmentHZ();
 }
 
 

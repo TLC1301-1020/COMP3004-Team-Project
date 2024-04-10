@@ -1,17 +1,24 @@
 #include "mainwindow.h"
-#include "headset.h"
+#include "mainoperation.h"
+#include "logs.h"
 #include <QApplication>
 #include <iostream>
 
 int main(int argc, char *argv[])
 {
-    //Testing (not intended for final code)
-    Headset headset = Headset();
+    MainOperation* mOp = new MainOperation();
 
-    cout << headset.getEEGBaseline() << endl;
-    headset.getEEGAverages();
-    headset.applyTreatment();
-    cout << headset.getEEGBaseline() << endl;
+    mOp->addToLogs("\n\nNew Test\n");
+
+    mOp->EEGAverage(1);
+    mOp->EEGTreatment(1);
+    mOp->EEGAverage(1);
+
+    cout << mOp->getLogs() << endl;
+
+    delete mOp;
+
+
 
 
     QApplication a(argc, argv);
