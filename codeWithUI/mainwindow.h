@@ -5,7 +5,7 @@
 #include <QListWidget>
 
 // Class
-#include "Mainoperation.h"
+#include "menu.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,11 +23,11 @@ private:
     Ui::MainWindow *ui;
     QListWidget *activeQListWidget;
 
-    MainOperation* operationMenu;
-    MainOperation* operationMenuOG;
+    Menu* operationMenu;
+    Menu* operationMenuOG;
 
 
-    void initializeMainMenu(MainOperation*);
+    void initializeMainMenu(Menu*);
     void updateMenu(const QStringList);
     void navigateUpMenu();
     void navigateDownMenu();

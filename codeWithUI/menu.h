@@ -1,5 +1,5 @@
-#ifndef MAINOPERATE_H
-#define MAINOPERATE_H
+#ifndef MENU_H
+#define MENU_H
 
 #include <QString>
 #include <QStringList>
@@ -7,18 +7,18 @@
 #include "headset.h"
 #include "logs.h"
 
-class MainOperation
+class Menu
 {
   public:
     //Constructor/Destructor
-    MainOperation(QString, QStringList, MainOperation*);
-    ~MainOperation();
+    Menu(QString, QStringList, Menu*);
+    ~Menu();
 
    // show some information
    //Menu
    QStringList getMenuItems();
    // add child
-   void addChildMenu(MainOperation*);
+   void addChildMenu(Menu*);
 
 
   // logic operation
@@ -39,9 +39,9 @@ class MainOperation
 
   private:
   QStringList menuItems;
-  QVector<MainOperation*> subMenus;
+  QVector<Menu*> subMenus;
   QString name;
-  MainOperation* parent;
+  Menu* parent;
 
 };
 

@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // Create menu tree
-    operationMenu = new MainOperation("",{"NEW SESSION","SESSION LOG","TIME AND DATE"}, nullptr);
+    operationMenu = new Menu("",{"NEW SESSION","SESSION LOG","TIME AND DATE"}, nullptr);
     operationMenuOG = operationMenu;
     initializeMainMenu(operationMenu);
 
@@ -28,15 +28,15 @@ MainWindow::~MainWindow()
 }
 
 //initialize funciton
-void MainWindow::initializeMainMenu(MainOperation* m) {
+void MainWindow::initializeMainMenu(Menu* m) {
 
     QStringList frequenciesList;
     QStringList programsList;
 
 
-    MainOperation* programs = new MainOperation("PROGRAMS", {"a"}, m);
-    MainOperation* frequencies = new MainOperation("FREQUENCIES", {"b"}, m);
-    MainOperation* history = new MainOperation("HISTORY", {"c"}, m);
+    Menu* programs = new Menu("PROGRAMS", {"a"}, m);
+    Menu* frequencies = new Menu("FREQUENCIES", {"b"}, m);
+    Menu* history = new Menu("HISTORY", {"c"}, m);
 
     m->addChildMenu(programs);
     m->addChildMenu(frequencies);

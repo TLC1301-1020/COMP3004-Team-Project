@@ -53,14 +53,10 @@ class MainOperation
 
   private:
     Headset* headset;
-
-    QTimer* timer;
-
-    QThread* thread;
-
     Logs* log;
-
     int seconds;
+    int battery;
+
 
 };
 

@@ -1,7 +1,7 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "Mainoperation.h"
+#include "menu.h"
 
 class View
 {

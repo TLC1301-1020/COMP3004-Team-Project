@@ -12,8 +12,6 @@ MainOperation::MainOperation() {
 }
 
 MainOperation::~MainOperation() {
-    delete timer;
-    delete thread;
     delete log;
     delete headset;
 }
