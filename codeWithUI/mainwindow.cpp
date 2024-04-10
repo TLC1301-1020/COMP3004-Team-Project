@@ -17,14 +17,19 @@ MainWindow::MainWindow(QWidget *parent)
     activeQListWidget->addItems(operationMenu->getMenuItems());
     activeQListWidget->setCurrentRow(0);
 
+    //Initialize the main operation
+    mOp = new MainOperation();
+
     connect(ui->Button_Menu, &QPushButton::pressed, this, &MainWindow::navigateToMainMenu);
     connect(ui->Button_Direction_Up, &QPushButton::pressed, this, &MainWindow::navigateUpMenu);
     connect(ui->Button_Direction_Down, &QPushButton::pressed, this, &MainWindow::navigateDownMenu);
+    connect(ui->Button_Start, &QPushButton::pressed, this, &MainWindow::playButton);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete mOp;
 }
 
 //initialize funciton
@@ -41,6 +46,16 @@ void MainWindow::initializeMainMenu(Menu* m) {
     m->addChildMenu(programs);
     m->addChildMenu(frequencies);
     m->addChildMenu(history);
+}
+
+void MainWindow::newSession() {
+    mOp->addToLogs("\n\nNew Test\n");
+
+    mOp->EEGAverage(1);
+    mOp->EEGTreatment(1);
+    mOp->EEGAverage(1);
+
+    cout << mOp->getLogs() << endl;
 }
 
 void MainWindow::updateMenu(const QStringList menuItems) {
@@ -81,5 +96,28 @@ void MainWindow::navigateDownMenu() {
     }
 
     activeQListWidget->setCurrentRow(nextIndex);
+}
+
+void MainWindow::playButton() {
+    int index = activeQListWidget->currentRow() + 1;
+
+    switch(index){
+        case 1:
+            cout << "Starting main operation..." << endl;
+            ui->programViewWidget->setVisible(true);
+            newSession();
+        break;
+
+        case 2:
+            cout << "Opening logs..." << endl;
+            ui->programViewWidget->setVisible(true);
+
+        break;
+
+        case 3:
+            cout << "Time and Date..." << endl;
+            ui->programViewWidget->setVisible(true);
+        break;
+    }
 }
 

@@ -6,6 +6,8 @@
 
 // Class
 #include "menu.h"
+#include "mainoperation.h"
+#include "logs.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,15 +28,19 @@ private:
     Menu* operationMenu;
     Menu* operationMenuOG;
 
+    MainOperation* mOp;
+
 
     void initializeMainMenu(Menu*);
     void updateMenu(const QStringList);
     void navigateUpMenu();
     void navigateDownMenu();
+    void newSession();
 
 private slots:
     // main menu
     void navigateToMainMenu();
+    void playButton();
 
 
 };
