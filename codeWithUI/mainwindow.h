@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QListWidget>
+#include <QFile>
+#include <QTextStream>
 
 // Class
 #include "menu.h"
@@ -36,11 +38,14 @@ private:
     void navigateUpMenu();
     void navigateDownMenu();
     void newSession();
+    void readLogs();
 
 private slots:
     // main menu
     void navigateToMainMenu();
     void playButton();
+    void changeBatteryLevel(double);
+    void clickStartButton();
 
 
 };

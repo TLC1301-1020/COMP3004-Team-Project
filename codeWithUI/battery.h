@@ -9,6 +9,8 @@ using namespace std;
 class Battery
 {
   public:
+    Battery(int, double);
+
     // 10% battery warning
     void batteryWarning();
 
@@ -18,12 +20,19 @@ class Battery
     // full battery prompts
     void batteryFullPrompts();
 
+    int getId();
+    double getBLvl();
+    void setBLvl(double);
+
   private:
     // battery max time
     time_t batteryMaxContinueTime = 10;
 
     // battery current time
     time_t batteryCurrentTime;
+
+    int id;
+    double batteryLvl;
 };
 
 #endif

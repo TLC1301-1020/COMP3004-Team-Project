@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>441</width>
-    <height>576</height>
+    <width>429</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -55,28 +55,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="Battery_Info">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>460</y>
-      <width>31</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>98</number>
-    </property>
-    <property name="value">
-     <number>50</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-    <property name="textDirection">
-     <enum>QProgressBar::BottomToTop</enum>
     </property>
    </widget>
    <widget class="QWidget" name="programViewWidget" native="true">
@@ -272,10 +250,134 @@ selection-background-color: rgb(122, 0, 0)</string>
      <number>-1</number>
     </property>
    </widget>
+   <widget class="QFrame" name="statusBarQFrame">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>390</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QProgressBar" name="batteryLevelBar">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ubuntu Mono</family>
+       <pointsize>5</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">selection-background-color: rgb(164, 0, 0);
+background-color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="value">
+      <number>79</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="textVisible">
+      <bool>true</bool>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="format">
+      <string>%p%</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>40</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;:/myImage/powerButton.png&quot;)</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>10</y>
+      <width>201</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>185</width>
+       <height>129</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="logsText">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>201</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
    <zorder>mainMenuListView</zorder>
    <zorder>Button_Menu</zorder>
    <zorder>Button_Stop</zorder>
-   <zorder>Battery_Info</zorder>
    <zorder>Button_Pause</zorder>
    <zorder>Button_Start</zorder>
    <zorder>Light_Blue</zorder>
@@ -284,13 +386,16 @@ selection-background-color: rgb(122, 0, 0)</string>
    <zorder>Light_Green</zorder>
    <zorder>Light_Red</zorder>
    <zorder>programViewWidget</zorder>
+   <zorder>statusBarQFrame</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>scrollArea</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>441</width>
+     <width>429</width>
      <height>22</height>
     </rect>
    </property>
@@ -344,6 +449,22 @@ selection-background-color: rgb(122, 0, 0)</string>
     <hint type="destinationlabel">
      <x>220</x>
      <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>370</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>214</x>
+     <y>252</y>
     </hint>
    </hints>
   </connection>

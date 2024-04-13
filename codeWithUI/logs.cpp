@@ -1,11 +1,9 @@
+#include <cstdio>
 #include "logs.h"
 
 Logs::Logs() {
-    ofstream LogFile(logFileName);
-    logFileName = "neuraset_logs.txt";
+    char logFileName[] = "neuraset_logs.txt";
     out.open(logFileName, ios::app);
-    in.open(logFileName, ifstream::in);
-
 }
 
 Logs::~Logs() {
@@ -14,7 +12,6 @@ Logs::~Logs() {
 }
 
 void Logs::addToLogs(string entry) {
-    //Open text file
 
     //Write new entry to the log file
     out << entry;
@@ -22,10 +19,17 @@ void Logs::addToLogs(string entry) {
 }
 
 string Logs::showAllInfoLogs() {
-    string logContents;
+    stringstream logOutput;
     string temp;
-
-    in >> logContents;
-
-    return logContents;
+    out.close();
+    in.open("neuraset_logs.txt", istream::in);
+    if(in.is_open()) {
+        while(in.good()) {
+            getline(in, temp);
+            logOutput << temp << '\n';
+        }
+    }
+    in.close();
+    out.open("neuraset_logs.txt", ios::app);
+    return logOutput.str();
 }

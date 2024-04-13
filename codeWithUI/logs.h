@@ -25,7 +25,6 @@ class Logs
 
   private:
   // store information (may have some problems, only can have one egg array)
-    string logFileName;
 
     ofstream out;
     ifstream in;
