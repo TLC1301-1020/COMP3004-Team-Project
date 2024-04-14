@@ -25,7 +25,7 @@ Documents:
 Week 1:
 - Use cases, UML class diagram draft
 - Basic layout and design of code
-- 
+  
 Week 2:
 - Sequence diagram drafts, State diagrams
 - Code update, GUI
