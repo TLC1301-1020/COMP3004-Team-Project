@@ -2,7 +2,7 @@
 COMP 3004 Final project 2024 Winter
 
 
-## Members of group 21:
+## Members of Group 21:
 - Karthiga Balasubramaniam
 - Isaac Arneill
 - Yanwei Su
