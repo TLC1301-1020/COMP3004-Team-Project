@@ -41,3 +41,7 @@ Week 2:
 Week 3:
 - Treaceability Matrix, Sequence diagrams update
 - Code update
+
+Week 4:
+- Update all necessary diagrams, textual explanation of the code, readme files
+- Code update
