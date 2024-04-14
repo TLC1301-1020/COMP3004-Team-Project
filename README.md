@@ -29,7 +29,7 @@ Documents:
 
 - *Readme.txt*: Explanation of files included in the project, info of group members
 
-
+## Work procedure
 Week 1:
 - Use cases, UML class diagram draft
 - Basic layout and design of code
@@ -45,3 +45,8 @@ Week 3:
 Week 4:
 - Update all necessary diagrams, textual explanation of the code, readme files
 - Code update
+
+## Explanation
+
+## Instruction to run the code
+
