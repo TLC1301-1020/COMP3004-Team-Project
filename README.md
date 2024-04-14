@@ -8,12 +8,24 @@ COMP 3004 Final project 2024 Winter
 - Yanwei Su
 - Tina Cao - 101158711
 
+## Breakdown of work
+Karthiga:
+- Use case: 1.1, 1.2, 1.3
+- Sequence diagram: Session history, Time setting, Connection lost
+  
+Tina:
+- Use case: 2, 3, 4
+- Sequence diagram: Mew session, Low battery and No battery
+- Traceability Matrix
+  
+Isaac:
+
+Yanwei:
+
+
 ## Files Included in this project
 Code:
 - TODO
-
-
-
 Documents:
 - *EEGStateDiagram.png*: State diagram for EEG sites
 - *OverallStateDiagram.png*: State diagram for the overall system
