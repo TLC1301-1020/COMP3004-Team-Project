@@ -69,18 +69,28 @@ void MainWindow::newSession() {
 
     mOp->EEGBaseline();
 
-    cout << mOp->getLogs() << endl;
 
 
 }
 
 void MainWindow::readLogs() {
     ui->List_View->setVisible(false);
-    string logs = mOp->getLogs();
-    QString qlogs = QString::fromStdString(logs);
-    ui->logsText->setText(qlogs);
-    ui->logsText->adjustSize();
-    ui->scrollArea->setVisible(true);
+    string temp;
+    QString qLogs;
+    mOp->getLogs();
+    ifstream in("neuraset_logs.txt", istream::in);
+    if(in.is_open()) {
+        while(in.good()) {
+            getline(in, temp);
+            qLogs = QString::fromStdString(temp);
+            QLabel* label = new QLabel(this);
+            label->setText(qLogs);
+            ui->logArea->addWidget(label);
+
+        }
+    }
+    in.close();
+
 }
 
 void MainWindow::updateMenu(const QStringList menuItems) {

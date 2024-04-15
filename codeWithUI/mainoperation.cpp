@@ -59,8 +59,8 @@ void MainOperation::EEGTreatment(int index) {
 }
 
 
-string MainOperation::getLogs() {
-    return log->showAllInfoLogs();
+void MainOperation::getLogs() {
+    log->showAllInfoLogs();
 }
 
 

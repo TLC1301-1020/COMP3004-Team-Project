@@ -46,7 +46,7 @@ class MainOperation
     int EEGAverage(int index);
 
     //Get the logs
-    string getLogs();
+    void getLogs();
 
     //Add to logs
     void addToLogs(string entry);

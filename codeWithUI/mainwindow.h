@@ -5,6 +5,7 @@
 #include <QListWidget>
 #include <QFile>
 #include <QTextStream>
+#include <QLabel>
 
 // Class
 #include "menu.h"

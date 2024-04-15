@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <QString>
 #include "logs.h"
 
 Logs::Logs() {
@@ -18,18 +19,7 @@ void Logs::addToLogs(string entry) {
 
 }
 
-string Logs::showAllInfoLogs() {
-    stringstream logOutput;
-    string temp;
+void Logs::showAllInfoLogs() {
     out.close();
-    in.open("neuraset_logs.txt", istream::in);
-    if(in.is_open()) {
-        while(in.good()) {
-            getline(in, temp);
-            logOutput << temp << '\n';
-        }
-    }
-    in.close();
     out.open("neuraset_logs.txt", ios::app);
-    return logOutput.str();
 }

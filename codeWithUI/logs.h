@@ -7,8 +7,8 @@
 #include <sstream>
 #include <iomanip>
 
-
 #include "headset.h"
+
 
 class Logs
 {
@@ -18,7 +18,7 @@ class Logs
     ~Logs();
 
     // show all information in logs
-    string showAllInfoLogs();
+    void showAllInfoLogs();
 
     //Add info to a log
     void addToLogs(string entry);

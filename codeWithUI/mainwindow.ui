@@ -360,18 +360,16 @@ background-color: rgb(0, 0, 0);</string>
        <height>129</height>
       </rect>
      </property>
-     <widget class="QLabel" name="logsText">
+     <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>201</width>
-        <height>411</height>
+        <width>191</width>
+        <height>131</height>
        </rect>
       </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
+      <layout class="QVBoxLayout" name="logArea"/>
      </widget>
     </widget>
    </widget>
