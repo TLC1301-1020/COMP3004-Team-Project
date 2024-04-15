@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QLabel>
+#include <QVBoxLayout>
 
 // Class
 #include "menu.h"
@@ -32,6 +33,9 @@ private:
     Menu* operationMenuOG;
 
     MainOperation* mOp;
+
+    QVBoxLayout* logArea;
+    QWidget* widget;
 
 
     void initializeMainMenu(Menu*);

@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    widget = new QWidget(this);
+    logArea = new QVBoxLayout(this);
+
+
     // Create menu tree
     operationMenu = new Menu("",{"NEW SESSION","SESSION LOG","TIME AND DATE"}, nullptr);
     operationMenuOG = operationMenu;
@@ -16,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     activeQListWidget = ui->mainMenuListView;
     activeQListWidget->addItems(operationMenu->getMenuItems());
     activeQListWidget->setCurrentRow(0);
+    ui->scrollArea->setVisible(false);
 
     //Initialize the main operation
     mOp = new MainOperation();
@@ -31,6 +36,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete mOp;
+    delete logArea;
+    delete widget;
+    delete operationMenu;
 }
 
 //initialize funciton
@@ -74,10 +82,19 @@ void MainWindow::newSession() {
 }
 
 void MainWindow::readLogs() {
-    ui->List_View->setVisible(false);
+    QLayoutItem* tempItem;
+    while(logArea->count() != 0) {
+        tempItem = logArea->takeAt(0);
+        delete tempItem;
+    }
+    delete logArea;
+    delete widget;
+
     string temp;
     QString qLogs;
     mOp->getLogs();
+    widget = new QWidget(this);
+    logArea = new QVBoxLayout(widget);
     ifstream in("neuraset_logs.txt", istream::in);
     if(in.is_open()) {
         while(in.good()) {
@@ -85,12 +102,15 @@ void MainWindow::readLogs() {
             qLogs = QString::fromStdString(temp);
             QLabel* label = new QLabel(this);
             label->setText(qLogs);
-            ui->logArea->addWidget(label);
+            logArea->addWidget(label);
 
         }
     }
+    ui->scrollArea->setWidget(widget);
     in.close();
-
+    //ui->programViewWidget->setVisible(true);
+    //ui->List_View->setVisible(false);
+    ui->scrollArea->setVisible(true);
 }
 
 void MainWindow::updateMenu(const QStringList menuItems) {
@@ -107,7 +127,7 @@ void MainWindow::navigateToMainMenu(){
     qInfo("testMenu");
     updateMenu(operationMenu->getMenuItems());
     ui->programViewWidget->setVisible(false);
-
+    ui->scrollArea->setVisible(false);
 }
 
 void MainWindow::navigateUpMenu() {
