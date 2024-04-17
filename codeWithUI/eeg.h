@@ -18,14 +18,17 @@ class EEG
     void createTreatmentHZ();
 
     //get brainwave frequency
-    int getFrequency();
+    double getFrequency();
 
     //
 
   private:
     //Frequency range
-    int frequencyMax;
-    int frequencyMin;
+    double amplitudeMax;
+    double amplitudeMin;
+    double xMax;
+    double xMin;
+    double offset;
 
     // start time
     time_t startTime;

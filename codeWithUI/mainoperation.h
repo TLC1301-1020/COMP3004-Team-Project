@@ -9,6 +9,7 @@
 
 #include "headset.h"
 #include "logs.h"
+#include "battery.h"
 
 class MainOperation
 {
@@ -40,10 +41,10 @@ class MainOperation
     int singleTreatment(int index);
 
     //Get the EEG Baseline
-    int EEGBaseline();
+    double EEGBaseline();
 
     //Get the average of one EEG location
-    int EEGAverage(int index);
+    double EEGAverage(int index);
 
     //Get the logs
     void getLogs();
@@ -51,11 +52,17 @@ class MainOperation
     //Add to logs
     void addToLogs(string entry);
 
+    //Get battery level
+    double getBattery();
+
+    //Set battery level
+    void setBattery(double bLevel);
+
   private:
     Headset* headset;
     Logs* log;
+    Battery* battery;
     int seconds;
-    int battery;
 
 
 };

@@ -24,9 +24,9 @@ class Headset
     void applyTreatment(int index);
 
     //check EEG
-    int getEEGBaseline();
+    double getEEGBaseline();
 
-    int getEEGFrequency(int index);
+    double getEEGFrequency(int index);
 
   private:
   // store information (may have some problems, only can have one egg array)

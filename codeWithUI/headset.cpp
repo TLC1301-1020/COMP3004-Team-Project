@@ -13,9 +13,9 @@ Headset::~Headset() {
 }
 
 
-int Headset::getEEGBaseline() {
-    int average = 0;
-    int total = 0;
+double Headset::getEEGBaseline() {
+    double average = 0;
+    double total = 0;
     EEG* temp;
 
     for(int i = 0; i < 21; i++) {
@@ -29,7 +29,7 @@ int Headset::getEEGBaseline() {
     return average;
 }
 
-int Headset::getEEGFrequency(int index) {
+double Headset::getEEGFrequency(int index) {
     EEG* temp = eegs->get(index);
     return temp->getFrequency();
 }

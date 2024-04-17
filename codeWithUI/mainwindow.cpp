@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     operationMenu = new Menu("",{"NEW SESSION","SESSION LOG","TIME AND DATE"}, nullptr);
     operationMenuOG = operationMenu;
     initializeMainMenu(operationMenu);
+    menuState = false;
 
     // Initialize the main menu view
     activeQListWidget = ui->mainMenuListView;
@@ -58,8 +59,8 @@ void MainWindow::initializeMainMenu(Menu* m) {
 }
 
 void MainWindow::newSession() {
-    ui->programViewWidget->setVisible(true);
 
+    ui->programViewWidget->setVisible(true);
 
     mOp->addToLogs("\n\nNew Test\n");
 
@@ -76,6 +77,8 @@ void MainWindow::newSession() {
     }
 
     mOp->EEGBaseline();
+
+    changeBatteryLevel(mOp->getBattery() - 10.0);
 
 
 
@@ -124,10 +127,16 @@ void MainWindow::updateMenu(const QStringList menuItems) {
 
 // Menu
 void MainWindow::navigateToMainMenu(){
-    qInfo("testMenu");
-    updateMenu(operationMenu->getMenuItems());
-    ui->programViewWidget->setVisible(false);
-    ui->scrollArea->setVisible(false);
+    if(mOp->getBattery() > 0.0) {
+        qInfo("testMenu");
+        updateMenu(operationMenu->getMenuItems());
+        ui->programViewWidget->setVisible(false);
+        ui->scrollArea->setVisible(false);
+        menuState = true;
+    }
+    else {
+        qInfo("Battery depleted");
+    }
 }
 
 void MainWindow::navigateUpMenu() {
@@ -154,33 +163,43 @@ void MainWindow::navigateDownMenu() {
 }
 
 void MainWindow::playButton() {
-    int index = activeQListWidget->currentRow() + 1;
+    if(menuState == true) {
+        menuState = false;
+        int index = activeQListWidget->currentRow() + 1;
 
-    switch(index){
-        case 1:
-            cout << "Starting main operation..." << endl;
-            newSession();
-        break;
+        switch(index){
+            case 1:
+                cout << "Starting main operation..." << endl;
+                newSession();
+            break;
 
-        case 2:
-            cout << "Opening logs..." << endl;
-            readLogs();
+            case 2:
+                cout << "Opening logs..." << endl;
+                readLogs();
 
-        break;
+            break;
 
-        case 3:
-            cout << "Time and Date..." << endl;
-            ui->programViewWidget->setVisible(true);
-        break;
+            case 3:
+                cout << "Time and Date..." << endl;
+                ui->programViewWidget->setVisible(true);
+            break;
+        }
+
     }
 }
 
 // battery
 void MainWindow::changeBatteryLevel(double newLevel) {
 
+    if(newLevel < 0.0) {
+        newLevel = 0.0;
+    }
+
     if (newLevel >= 0.0 && newLevel <= 100.0) {
         int newLevelInt = int(newLevel);
         ui->batteryLevelBar->setValue(newLevelInt);
+
+        mOp->setBattery(newLevel);
 
         QString highBatteryHealth = "QProgressBar { selection-background-color: rgb(78, 154, 6); background-color: rgb(0, 0, 0); }";
         QString mediumBatteryHealth = "QProgressBar { selection-background-color: rgb(196, 160, 0); background-color: rgb(0, 0, 0); }";
@@ -198,7 +217,7 @@ void MainWindow::changeBatteryLevel(double newLevel) {
     }
 }
 
-void MainWindow:: clickStartButton(){
+void MainWindow::clickStartButton(){
     changeBatteryLevel(100.00);
 }
 

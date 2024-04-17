@@ -8,18 +8,20 @@
 MainOperation::MainOperation() {
     headset = new Headset();
     log = new Logs();
+    battery = new Battery(1, 79);
 
 }
 
 MainOperation::~MainOperation() {
     delete log;
     delete headset;
+    delete battery;
 }
 
 
-int MainOperation::EEGBaseline() {
-    int total = 0;
-    int average;
+double MainOperation::EEGBaseline() {
+    double total = 0;
+    double average;
     for(int i = 0; i < 21; i++) {
         total += headset->getEEGFrequency(i);
     }
@@ -31,9 +33,9 @@ int MainOperation::EEGBaseline() {
     return average;
 }
 
-int MainOperation::EEGAverage(int index) {
-    int total = 0;
-    int average;
+double MainOperation::EEGAverage(int index) {
+    double total = 0.0;
+    double average;
     for(int i = 0; i < 60; i++) {
         total += headset->getEEGFrequency(index);
         //usleep(100000);
@@ -48,7 +50,6 @@ int MainOperation::EEGAverage(int index) {
 void MainOperation::EEGTreatment(int index) {
     for(int i = 0; i < 16; i++) {
         headset->applyTreatment(index);
-        cout << headset->getEEGFrequency(index) << "\n";
         //usleep(62 * 1000);
 
     }
@@ -66,6 +67,14 @@ void MainOperation::getLogs() {
 
 void MainOperation::addToLogs(string entry) {
     log->addToLogs(entry);
+}
+
+double MainOperation::getBattery() {
+    return battery->getBLvl();
+}
+
+void MainOperation::setBattery(double bLevel) {
+    battery->setBLvl(bLevel);
 }
 
 

@@ -32,6 +32,8 @@ private:
     Menu* operationMenu;
     Menu* operationMenuOG;
 
+    bool menuState;
+
     MainOperation* mOp;
 
     QVBoxLayout* logArea;
