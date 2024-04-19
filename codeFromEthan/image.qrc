@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/myImage">
+        <file>switch.png</file>
+        <file>stop.png</file>
+        <file>start.png</file>
+        <file>pause.png</file>
+        <file>menu.png</file>
+        <file>up.png</file>
+        <file>down.png</file>
+        <file>powerButton.png</file>
+    </qresource>
+</RCC>
