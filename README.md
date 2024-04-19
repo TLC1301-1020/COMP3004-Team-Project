@@ -19,6 +19,11 @@ Tina:
 - Traceability Matrix
   
 Isaac:
+- Neuraset Session code
+- Neuraset Logs and display logs code
+- Some battery code
+- Some UI code
+- Some general planning
 
 Yanwei:
 
