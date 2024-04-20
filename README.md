@@ -14,9 +14,10 @@ Karthiga:
 - Sequence diagram: Session history, Time setting, Connection lost
   
 Tina:
-- Use case: 2, 3, 4
+- Use case: 1.4 2, 3
 - Sequence diagram: Mew session, Low battery and No battery
 - Traceability Matrix
+- Readme
   
 Isaac:
 - Neuraset Session code
@@ -26,7 +27,7 @@ Isaac:
 - Some general planning
 
 Yanwei:
-
+- 
 
 ## Files Included in this project
 Code:
