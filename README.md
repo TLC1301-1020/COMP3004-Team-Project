@@ -10,14 +10,15 @@ COMP 3004 Final project 2024 Winter
 
 ## Breakdown of work
 Karthiga:
-- Use case: 1.1, 1.2, 1.3
-- Sequence diagram: Session history, Time setting, Connection lost
+- Use cases: 1.1, 1.2, 1.3
+- Sequence diagrams: Session history, Time setting, Connection lost
   
 Tina:
-- Use case: 1.4 2, 3
-- Sequence diagram: Mew session, Low battery and No battery
+- Use cases: 1.4 2, 3
+- Sequence diagrams: Mew session, Low battery and No battery
 - Traceability Matrix
 - Readme
+- State diagrams: Overall and EEG
   
 Isaac:
 - Neuraset Session code
