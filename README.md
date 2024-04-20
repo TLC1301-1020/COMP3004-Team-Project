@@ -37,8 +37,7 @@ Documents:
 - *EEGStateDiagram.png*: State diagram for EEG sites
 - *OverallStateDiagram.png*: State diagram for the overall system
 
-- *NewSessionSequenceDiagram.png*: Sequence diagram for normal scenario (including session paused by user)
-- *LowBatterySequenceDiagram.png*: Sequence diagram for low battery scenario
+- *NewSessionSequenceDiagram.png*: Sequence diagram for normal scenario (including 1.1,1.2,1.3,1.4 in use cases)
 - *OutOfBatterySequenceDiagram.png*: Sequence diagram for out of battery scenario
 - *ConnectionLostSequenceDiagram.png*: Sequence diagram for connection lost scenario
 
