@@ -83,4 +83,4 @@ Week 4-5:
 ## Explanation
 
 ## Instruction to run the code
-
+Open folder in Qt, open mainwindow.cpp and run
