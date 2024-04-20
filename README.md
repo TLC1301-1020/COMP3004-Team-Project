@@ -28,7 +28,7 @@ Isaac:
 - Some general planning
 
 Yanwei:
-- 
+- TODO
 
 ## Files Included in this project
 Code:
