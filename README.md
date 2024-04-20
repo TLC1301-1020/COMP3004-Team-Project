@@ -43,15 +43,15 @@ Header files:
 - view.h
 
 Source files:
-- battery.cpp: stores battery info
-- eeg.cpp: stores individual eeg info
-- eegarray.cpp: stores an array of eeg, manager class of eeg sites
-- headset.cpp: functionalities of eeg sites
-- logs.cpp: stores info of session logs
-- main.cpp: main function
-- mainoperation.cpp: contains system operations
-- mainwindow.cpp: design and functions of the UI
-- menu.cpp: functions for the three buttons(timeanddate, sessionlog, newsession)
+- *battery.cpp*: stores battery info
+- *eeg.cpp*: stores individual eeg info
+- *eegarray*.cpp: stores an array of eeg, manager class of eeg sites
+- *headset.cpp*: functionalities of eeg sites
+- *logs.cpp*: stores info of session logs
+- *main.cpp*: main function
+- *mainoperation.cpp*: contains system operations
+- *mainwindow.cpp*: design and functions of the UI
+- *menu.cpp*: functions for the three buttons(timeanddate, sessionlog, newsession)
   
 Documents:
 - *EEGStateDiagram.png*: State diagram for EEG sites
@@ -76,7 +76,7 @@ Week 3:
 - Treaceability Matrix, Sequence diagrams update
 - Code update
 
-Week 4:
+Week 4-5:
 - Update all necessary diagrams, textual explanation of the code, readme files
 - Code update
 
