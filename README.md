@@ -19,6 +19,7 @@ Tina:
 - Traceability Matrix
 - Readme
 - State diagrams: Overall and EEG
+- Revise sequence diagrams
   
 Isaac:
 - Neuraset Session code
