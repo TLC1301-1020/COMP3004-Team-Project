@@ -14,7 +14,7 @@ Karthiga:
 - Sequence diagrams: Session history, Time setting, Connection lost
   
 Tina:
-- Use cases: 1.4 2, 3
+- Use cases: 1.4, 2, 3
 - Sequence diagrams: Mew session, Low battery and No battery
 - Traceability Matrix
 - Readme
