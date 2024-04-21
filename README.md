@@ -24,10 +24,12 @@ Tina:
 Isaac:
 - Some general planning
 - Neuraset Session code
-- Neuraset Logs and display logs code
+- Neuraset Logs
+- Display logs code
 - Parts in battery
 - Some UI code
-- Headset, EEG, EEGArray
+- Headset code
+- EEG, EEGArray code
   
 Yanwei:
 - Base Class diagram
