@@ -14,12 +14,10 @@ SOURCES += \
     eeg.cpp \
     eegarray.cpp \
     headset.cpp \
-    light.cpp \
     logs.cpp \
     main.cpp \
     mainwindow.cpp \
-    menu.cpp \
-    view.cpp
+    menu.cpp
 
 HEADERS += \
     mainoperation.h \
@@ -27,11 +25,9 @@ HEADERS += \
     eeg.h \
     eegarray.h \
     headset.h \
-    light.h \
     logs.h \
     mainwindow.h \
-    menu.h \
-    view.h
+    menu.h
 
 FORMS += \
     mainwindow.ui

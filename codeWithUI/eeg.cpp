@@ -27,6 +27,10 @@ double EEG::getFrequency() {
     return brainFrequency;
 }
 
+double EEG::getTimer() {
+    return timer;
+}
+
 void EEG::createTreatmentHZ() {
     offset += 5;
 }

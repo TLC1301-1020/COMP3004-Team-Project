@@ -7,6 +7,7 @@
 #include <QTextStream>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QTime>
 
 // Class
 #include "menu.h"
@@ -39,6 +40,11 @@ private:
     QVBoxLayout* logArea;
     QWidget* widget;
 
+    QString timeString;
+
+    int currentTimerCount;
+    QTimer *t = new QTimer();
+
 
     void initializeMainMenu(Menu*);
     void updateMenu(const QStringList);
@@ -47,13 +53,20 @@ private:
     void newSession();
     void readLogs();
 
+    // timer function
+    void initializeTimer(QTimer*);
+    void timePause(QTimer* t);
+    void timeStop(QTimer* t);
+
 private slots:
     // main menu
     void navigateToMainMenu();
     void playButton();
     void changeBatteryLevel(double);
     void clickStartButton();
-
+    void clickPauseButton();
+    void clickStopButton();
+    void updateTimer();
 
 };
 #endif // MAINWINDOW_H

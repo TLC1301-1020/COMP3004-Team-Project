@@ -58,11 +58,44 @@ class MainOperation
     //Set battery level
     void setBattery(double bLevel);
 
+
+
+    // light info
+    // get
+    bool getContactLight();
+    bool getTreatmentSignalLight ();
+    bool getContactLostLight();
+
+    //set
+    void setContactLight(bool contactLightStatu);
+    void setTreatmentSignalLight(bool treatmentSignalStatu);
+    void setContactLostLight(bool contactLostLightStatu);
+
+
+    // set power statu
+    bool getPowerStatu();
+    void setPowerStatu(bool powerSingal);
+
+
+    // timer
+    // get and set
+    int getTime();
+    void setTime(int timer);
+
   private:
+    // power
+    bool powerStatu = false;
+
     Headset* headset;
     Logs* log;
     Battery* battery;
     int seconds;
+
+    bool contactLight = false;
+    bool treatmentSignalLight = false;
+    bool contactLostLight = false;
+
+   int time = 1000;
 
 
 };

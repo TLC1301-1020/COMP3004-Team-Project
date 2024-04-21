@@ -26,7 +26,7 @@ double MainOperation::EEGBaseline() {
         total += headset->getEEGFrequency(i);
     }
     average = total / 21;
-    //usleep(1000000);
+//    usleep(100);
     stringstream newLog;
     newLog << "EEG Baseline: " << average << "\n";
     log->addToLogs(newLog.str());
@@ -38,7 +38,7 @@ double MainOperation::EEGAverage(int index) {
     double average;
     for(int i = 0; i < 60; i++) {
         total += headset->getEEGFrequency(index);
-        //usleep(100000);
+//        usleep(100);
     }
     average = total / 60;
     stringstream newLog;
@@ -50,7 +50,7 @@ double MainOperation::EEGAverage(int index) {
 void MainOperation::EEGTreatment(int index) {
     for(int i = 0; i < 16; i++) {
         headset->applyTreatment(index);
-        //usleep(62 * 1000);
+//        usleep(62 * 1000);
 
     }
     stringstream newLog;
@@ -76,5 +76,24 @@ double MainOperation::getBattery() {
 void MainOperation::setBattery(double bLevel) {
     battery->setBLvl(bLevel);
 }
+
+// power get and set
+bool MainOperation::getPowerStatu(){
+    return powerStatu;
+}
+
+void MainOperation::setPowerStatu(bool powerSingal) {
+    powerStatu = powerSingal;
+}
+
+// time get and set
+int MainOperation::getTime(){
+    return time;
+}
+
+void MainOperation::setTime(int timer) {
+    time = timer;
+}
+
 
 

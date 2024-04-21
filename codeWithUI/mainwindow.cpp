@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     widget = new QWidget(this);
     logArea = new QVBoxLayout(this);
 
+    // Initialize timer counter
+    currentTimerCount = -1;
 
     // Create menu tree
     operationMenu = new Menu("",{"NEW SESSION","SESSION LOG","TIME AND DATE"}, nullptr);
@@ -31,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->Button_Direction_Down, &QPushButton::pressed, this, &MainWindow::navigateDownMenu);
     connect(ui->Button_Start, &QPushButton::pressed, this, &MainWindow::playButton);
     connect(ui->pushButton, &QPushButton::pressed, this, &MainWindow::clickStartButton);
+    connect(ui->Button_Pause, &QPushButton::pressed, this, &MainWindow::clickPauseButton);
+    connect(ui->Button_Stop, &QPushButton::pressed, this, &MainWindow::clickStopButton);
 }
 
 MainWindow::~MainWindow()
@@ -42,7 +46,7 @@ MainWindow::~MainWindow()
     delete operationMenu;
 }
 
-//initialize funciton
+//initialize funciton (menu)
 void MainWindow::initializeMainMenu(Menu* m) {
 
     QStringList frequenciesList;
@@ -58,64 +62,35 @@ void MainWindow::initializeMainMenu(Menu* m) {
     m->addChildMenu(history);
 }
 
-void MainWindow::newSession() {
 
-    ui->programViewWidget->setVisible(true);
 
-    mOp->addToLogs("\n\nNew Test\n");
-
-    //Get Baseline:
-    mOp->EEGBaseline();
-
-    for(int i = 0; i < 21; i++) {
-        stringstream newLog;
-        newLog << "\nEEG Node " << i+1 << " Treatment:" << "\n";
-        mOp->addToLogs(newLog.str());
-        mOp->EEGAverage(i);
-        mOp->EEGTreatment(i);
-        mOp->EEGAverage(i);
+// click power Button
+void MainWindow::clickStartButton(){
+    if(mOp->getPowerStatu() == false){
+        QString contact = "QPushButton {background-color: rgb(26, 95, 180);}";
+        ui->Light_Blue->setStyleSheet(contact);
+        QString treatment = "QPushButton {background-color: rgb(38, 162, 105);}";
+        ui->Light_Green->setStyleSheet(treatment);
+        QString discontact = "QPushButton {background-color: rgb(165, 29, 45);}";
+        ui->Light_Red->setStyleSheet(discontact);
+        changeBatteryLevel(100.00);
+        mOp->setPowerStatu(true);
+    }else{
+       QString contact = "QPushButton {background-color: rgb(153, 193, 241);}";
+        ui->Light_Blue->setStyleSheet(contact);
+        QString treatment = "QPushButton {background-color: rgb(143, 240, 164);}";
+        ui->Light_Green->setStyleSheet(treatment);
+        QString discontact = "QPushButton {background-color: rgb(246, 97, 81);}";
+        ui->Light_Red->setStyleSheet(discontact);
+        ui->programViewWidget->setVisible(true);
+        mOp->setPowerStatu(false);
     }
-
-    mOp->EEGBaseline();
-
-    changeBatteryLevel(mOp->getBattery() - 10.0);
-
-
 
 }
 
-void MainWindow::readLogs() {
-    QLayoutItem* tempItem;
-    while(logArea->count() != 0) {
-        tempItem = logArea->takeAt(0);
-        delete tempItem;
-    }
-    delete logArea;
-    delete widget;
 
-    string temp;
-    QString qLogs;
-    mOp->getLogs();
-    widget = new QWidget(this);
-    logArea = new QVBoxLayout(widget);
-    ifstream in("neuraset_logs.txt", istream::in);
-    if(in.is_open()) {
-        while(in.good()) {
-            getline(in, temp);
-            qLogs = QString::fromStdString(temp);
-            QLabel* label = new QLabel(this);
-            label->setText(qLogs);
-            logArea->addWidget(label);
 
-        }
-    }
-    ui->scrollArea->setWidget(widget);
-    in.close();
-    //ui->programViewWidget->setVisible(true);
-    //ui->List_View->setVisible(false);
-    ui->scrollArea->setVisible(true);
-}
-
+// update menu information
 void MainWindow::updateMenu(const QStringList menuItems) {
 
     activeQListWidget->clear();
@@ -125,20 +100,25 @@ void MainWindow::updateMenu(const QStringList menuItems) {
 }
 
 
-// Menu
+//Menu (if no power, system close)
 void MainWindow::navigateToMainMenu(){
     if(mOp->getBattery() > 0.0) {
         qInfo("testMenu");
         updateMenu(operationMenu->getMenuItems());
         ui->programViewWidget->setVisible(false);
         ui->scrollArea->setVisible(false);
+        ui->mainMenuListView->setVisible(true);
         menuState = true;
+        t->stop();
     }
     else {
         qInfo("Battery depleted");
     }
 }
 
+
+
+// navigate up
 void MainWindow::navigateUpMenu() {
 
     int nextIndex = activeQListWidget->currentRow() - 1;
@@ -150,7 +130,7 @@ void MainWindow::navigateUpMenu() {
     activeQListWidget->setCurrentRow(nextIndex);
 }
 
-
+// navigate down
 void MainWindow::navigateDownMenu() {
 
     int nextIndex = activeQListWidget->currentRow() + 1;
@@ -162,33 +142,9 @@ void MainWindow::navigateDownMenu() {
     activeQListWidget->setCurrentRow(nextIndex);
 }
 
-void MainWindow::playButton() {
-    if(menuState == true) {
-        menuState = false;
-        int index = activeQListWidget->currentRow() + 1;
 
-        switch(index){
-            case 1:
-                cout << "Starting main operation..." << endl;
-                newSession();
-            break;
 
-            case 2:
-                cout << "Opening logs..." << endl;
-                readLogs();
-
-            break;
-
-            case 3:
-                cout << "Time and Date..." << endl;
-                ui->programViewWidget->setVisible(true);
-            break;
-        }
-
-    }
-}
-
-// battery
+// Battery
 void MainWindow::changeBatteryLevel(double newLevel) {
 
     if(newLevel < 0.0) {
@@ -217,7 +173,165 @@ void MainWindow::changeBatteryLevel(double newLevel) {
     }
 }
 
-void MainWindow::clickStartButton(){
-    changeBatteryLevel(100.00);
+
+
+// timer operate
+// initialize timer
+void MainWindow::initializeTimer(QTimer* t) {
+
+    currentTimerCount = 1260;
+
+    connect(t, &QTimer::timeout, this, &MainWindow::updateTimer);
+
+    t->start(1000);
+
+}
+
+// updateTimer
+void MainWindow::updateTimer() {
+
+    QGraphicsScene *scene = new QGraphicsScene(this);
+    ui->List_View->setScene(scene);
+
+    if(currentTimerCount > 0){
+        timeString = QString::number(currentTimerCount/60) + ":00";
+        scene->addText(timeString);
+        ui->scrollArea->setVisible(true);
+        currentTimerCount = currentTimerCount - 60;
+    }else{
+        qInfo("Treatment Successful!");
+        t->stop();
+    }
+
+}
+
+// pause function
+// if pauseSingal is false, timer is not pause.
+int pauseSingal = false;
+
+void MainWindow :: timePause(QTimer* t){
+   if(pauseSingal == false){
+       qInfo("Timer pause!");
+       t->stop();
+//     t->setInterval(5000);
+       pauseSingal = true;
+   }else{
+        qInfo("Timer start again!");
+        t->start();
+        pauseSingal = false;
+   }
+
+}
+
+// stop function
+void MainWindow :: timeStop(QTimer* t){
+   t->stop();
+}
+
+// clisk Pause BUtton
+void MainWindow::clickPauseButton(){
+    timePause(t);
+}
+
+// clisk stop BUtton
+void MainWindow::clickStopButton(){
+    qInfo("Stop Running!");
+    timeStop(t);
+}
+
+
+
+//click new session
+void MainWindow::newSession() {
+
+    ui->programViewWidget->setVisible(true);
+
+    mOp->addToLogs("\n\nNew Test\n");
+
+    //Get Baseline:
+    mOp->EEGBaseline();
+
+    for(int i = 0; i < 21; i++) {
+        stringstream newLog;
+        newLog << "\nEEG Node " << i+1 << " Treatment:" << "\n";
+        mOp->addToLogs(newLog.str());
+        mOp->EEGAverage(i);
+        mOp->EEGTreatment(i);
+        mOp->EEGAverage(i);
+    }
+
+    mOp->EEGBaseline();
+
+    changeBatteryLevel(mOp->getBattery() - 10.0);
+
+    ui->mainMenuListView->setVisible(false);
+
+    initializeTimer(t);
+
+}
+
+
+
+// clisk logs
+void MainWindow::readLogs() {
+    QLayoutItem* tempItem;
+    while(logArea->count() != 0) {
+        tempItem = logArea->takeAt(0);
+        delete tempItem;
+    }
+    delete logArea;
+    delete widget;
+
+    string temp;
+    QString qLogs;
+    mOp->getLogs();
+    widget = new QWidget(this);
+    logArea = new QVBoxLayout(widget);
+    ifstream in("neuraset_logs.txt", istream::in);
+    if(in.is_open()) {
+        while(in.good()) {
+            getline(in, temp);
+            qLogs = QString::fromStdString(temp);
+            QLabel* label = new QLabel(this);
+            label->setText(qLogs);
+            logArea->addWidget(label);
+
+        }
+    }
+    ui->scrollArea->setWidget(widget);
+    in.close();
+    ui->programViewWidget->setVisible(true);
+    ui->List_View->setVisible(false);
+    ui->scrollArea->setVisible(true);
+}
+
+
+
+// code core, control system
+void MainWindow::playButton() {
+    if(menuState == true) {
+        menuState = false;
+        int index = activeQListWidget->currentRow() + 1;
+
+        switch(index){
+            case 1:
+                cout << "Starting main operation..." << endl;
+                newSession();
+
+            break;
+
+            case 2:
+                cout << "Opening logs..." << endl;
+                readLogs();
+
+            break;
+
+            case 3:
+                cout << "Time and Date..." << endl;
+
+            break;
+        }
+
+    }
 }
 

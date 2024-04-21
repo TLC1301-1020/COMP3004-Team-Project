@@ -19,6 +19,7 @@ class EEG
 
     //get brainwave frequency
     double getFrequency();
+    double getTimer();
 
     //
 
@@ -30,11 +31,11 @@ class EEG
     double xMin;
     double offset;
 
-    // start time
-    time_t startTime;
+
 
     // start time
-    time_t endTime;
+    time_t startTime;
+    int timer = 500;
 
 };
 
