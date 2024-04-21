@@ -105,7 +105,7 @@ Week 4-5:
 
 ## Explanation of Design Decision
 
-- Qt Framework: Utilizing Qt components such as QWidget(creating GUI components), QTimer(timing-related task), QListWidget(Managing lists of items with GUI) for developing the application.
+- Qt Framework: Utilizing Qt components such as QWidget(creating GUI components), QTimer(timing-related task), QListWidget(Managing lists of items with GUI), QGraphicScene(Managing 2D graphical items in the scene) for developing the application.
 
 - Modular Structure: Readability and maintainability are enhanced by having distinct methods for UI updates, calculations, functionality logics, and emergency handling. This allows easier modifications.
 
