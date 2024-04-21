@@ -5,7 +5,7 @@ COMP 3004 Final project 2024 Winter
 ## Members of Group 21:
 - Karthiga Balasubramaniam
 - Isaac Arneill - 101222972
-- Yanwei Su
+- Yanwei Su - 101209998
 - Tina Cao - 101158711
 
 ## Breakdown of work
@@ -22,15 +22,24 @@ Tina:
 - Revise sequence diagrams
   
 Isaac:
+- Some general planning
 - Neuraset Session code
 - Neuraset Logs and display logs code
-- Some battery code
+- Parts in battery
 - Some UI code
-- Some general planning
-
+- Headset, EEG, EEGArray
+  
 Yanwei:
-- TODO
-
+- Base Class diagram
+- Some UI code
+- Some battery code
+- Functions in mainOperation 
+- Functions in mainwindow
+- Functions in menu
+- Some EEG code
+- Timer code
+- Time and Date
+  
 ## Files Included in this project
 Header files:
 - Battery.h
@@ -41,7 +50,6 @@ Header files:
 - mainoperation.h
 - mainwindow.h
 - menu.h
-- view.h
 
 Source files:
 - *battery.cpp*: stores battery info
