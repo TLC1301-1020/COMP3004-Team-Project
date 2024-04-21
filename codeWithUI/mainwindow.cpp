@@ -258,6 +258,12 @@ void MainWindow::newSession() {
         mOp->EEGAverage(i);
         mOp->EEGTreatment(i);
         mOp->EEGAverage(i);
+
+        QString treatmentStart = "QPushButton {background-color: rgb(143, 240, 164);}";
+        ui->Light_Green->setStyleSheet(treatmentStart);
+
+        QString treatmentEnd = "QPushButton {background-color: rgb(38, 162, 105);}";
+        ui->Light_Green->setStyleSheet(treatmentEnd);
     }
 
     mOp->EEGBaseline();
@@ -266,6 +272,9 @@ void MainWindow::newSession() {
 
     ui->mainMenuListView->setVisible(false);
 
+    // make a new t
+    QTimer *tNew = new QTimer();
+    t = tNew;
     initializeTimer(t);
 
 }
