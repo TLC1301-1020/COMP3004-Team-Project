@@ -11,11 +11,11 @@ COMP 3004 Final project 2024 Winter
 ## Breakdown of work
 Karthiga:
 - Use cases: 1.1, 1.2, 1.3
-- Sequence diagrams: Session history, Time setting, Connection lost
+- Base Sequence diagrams: Session history, Time setting, Connection lost
   
 Tina:
 - Use cases: 1.4, 2, 3
-- Sequence diagrams: New session, Low battery and No battery
+- Sequence diagrams
 - Traceability Matrix
 - Readme
 - State diagrams: Overall and EEG
