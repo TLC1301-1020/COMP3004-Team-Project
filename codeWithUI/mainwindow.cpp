@@ -211,12 +211,12 @@ int pauseSingal = false;
 
 void MainWindow :: timePause(QTimer* t){
    if(pauseSingal == false){
-       qInfo("Timer pause!");
+       qInfo("Timer paused");
        t->stop();
 //     t->setInterval(5000);
        pauseSingal = true;
    }else{
-        qInfo("Timer start again!");
+        qInfo("Timer resumed");
         t->start();
         pauseSingal = false;
    }
