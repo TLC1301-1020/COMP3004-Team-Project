@@ -18,7 +18,7 @@ Tina:
 - Sequence diagrams
 - Traceability Matrix
 - Readme, design explanation
-- State diagrams: Overall and EEG
+- State diagrams
 - Revise Sequence diagrams
 - Revise Class diagram
   
