@@ -83,7 +83,7 @@ Documents:
 - *Use Case.pdf*: Use cases for the system
 - *TraceabilityMatrix.pdf*: Traceability matrix for the system
 - *Readme.txt*: Explanation of files included in the project, info of group members
-
+- *diagrams*: Folder contains all diagram images
 
 ## Work procedure
 Week 1:
