@@ -15,7 +15,7 @@ Karthiga:
 
 Tina:
 - Use cases: 1.4, 2, 3
-- Sequence diagrams
+- Sequence diagrams: Normal Scenario, Out of battery, Low battery
 - Traceability Matrix
 - Readme, design explanation
 - State diagrams
