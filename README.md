@@ -64,13 +64,21 @@ Source files:
 - *mainoperation.cpp*: contains system operations
 - *mainwindow.cpp*: design and functions of the UI
 - *menu.cpp*: functions for the three buttons(timeanddate, sessionlog, newsession)
+
+Others:
+- menu.png
+- pause.png
+- powerButton.png
+- start.png
+- stop.png
+- switch.png
+- up.png
+- down.png
+- image.qrc
+- neuraset_logs.txt (created after running the program)
   
 Documents:
-- *EEGStateDiagram.png*: State diagram for EEG sites
-- *OverallStateDiagram.png*: State diagram for the overall system
-- *NewSessionSequenceDiagram.png*: Sequence diagram for normal scenario (including 1.1,1.2,1.3,1.4 in use cases)
-- *OutOfBatterySequenceDiagram.png*: Sequence diagram for out of battery scenario
-- *ConnectionLostSequenceDiagram.png*: Sequence diagram for connection lost scenario
+- *Diagrams.pd*: All diagrams required for the project
 - *Use Case.pdf*: Use cases for the system
 - *TraceabilityMatrix.pdf*: Traceability matrix for the system
 - *Readme.txt*: Explanation of files included in the project, info of group members
