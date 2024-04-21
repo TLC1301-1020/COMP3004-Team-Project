@@ -15,11 +15,12 @@ Karthiga:
   
 Tina:
 - Use cases: 1.4, 2, 3
-- Sequence diagrams: Mew session, Low battery and No battery
+- Sequence diagrams: New session, Low battery and No battery
 - Traceability Matrix
 - Readme
 - State diagrams: Overall and EEG
 - Revise sequence diagrams
+- Revise class diagram
   
 Isaac:
 - Some general planning
