@@ -57,7 +57,7 @@ Header files:
 Source files:
 - *battery.cpp*: stores battery info
 - *eeg.cpp*: stores individual eeg info
-- *eegarray*.cpp: stores an array of eeg, manager class of eeg sites
+- *eegArray*.cpp: stores an array of eeg, manager class of eeg sites
 - *headset.cpp*: functionalities of eeg sites
 - *logs.cpp*: stores info of session logs
 - *main.cpp*: main function
@@ -97,7 +97,7 @@ Week 3:
 - Code update
 
 Week 4-5:
-- Update all necessary diagrams, textual explanation of the code, readme files
+- Update all necessary diagrams, textual explanation of the code, readme file
 - Code update
 
 ## Explanation
