@@ -281,7 +281,7 @@ void MainWindow::newSession() {
 
 
 
-// clisk logs
+// click logs
 void MainWindow::readLogs() {
     QLayoutItem* tempItem;
     while(logArea->count() != 0) {
