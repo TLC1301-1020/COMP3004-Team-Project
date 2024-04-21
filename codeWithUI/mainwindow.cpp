@@ -211,12 +211,12 @@ int pauseSingal = false;
 
 void MainWindow :: timePause(QTimer* t){
    if(pauseSingal == false){
-       qInfo("Timer paused");
+       qInfo("Timer pause!");
        t->stop();
 //     t->setInterval(5000);
        pauseSingal = true;
    }else{
-        qInfo("Timer resumed");
+        qInfo("Timer start again!");
         t->start();
         pauseSingal = false;
    }
@@ -271,6 +271,7 @@ void MainWindow::newSession() {
     changeBatteryLevel(mOp->getBattery() - 10.0);
 
     ui->mainMenuListView->setVisible(false);
+    ui->userDateInput->setVisible(false);
 
     // make a new t
     QTimer *tNew = new QTimer();
@@ -281,7 +282,7 @@ void MainWindow::newSession() {
 
 
 
-// click logs
+// clisk logs
 void MainWindow::readLogs() {
     QLayoutItem* tempItem;
     while(logArea->count() != 0) {
@@ -309,9 +310,10 @@ void MainWindow::readLogs() {
     }
     ui->scrollArea->setWidget(widget);
     in.close();
-    ui->programViewWidget->setVisible(true);
-    ui->List_View->setVisible(false);
+    //ui->programViewWidget->setVisible(true);
+    //ui->List_View->setVisible(false);
     ui->scrollArea->setVisible(true);
+
 }
 
 
@@ -337,6 +339,25 @@ void MainWindow::playButton() {
 
             case 3:
                 cout << "Time and Date..." << endl;
+                QGraphicsScene *scene = new QGraphicsScene(this);
+                ui->List_View->setScene(scene);
+
+                ui->mainMenuListView ->setVisible(false);
+                time_t startTreatmentTime;
+                time(&startTreatmentTime);
+
+                string timeinfo = ctime(&startTreatmentTime);
+                string infoForUser = "Current Time: ";
+                string currentTimeInfo = infoForUser + timeinfo;
+
+                QString QStringCurrentTimeInfo = QString::fromStdString(currentTimeInfo);
+
+                scene->addText(QStringCurrentTimeInfo);
+                ui->scrollArea->setVisible(true);
+                ui->userDateInput->setVisible(true);
+
+                // user input and change
+
 
             break;
         }
