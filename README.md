@@ -11,8 +11,8 @@ COMP 3004 Final project 2024 Winter
 ## Breakdown of work
 Karthiga:
 - Use cases: 1.1, 1.2, 1.3
-- Base Sequence diagrams: Session history, Time setting, Connection lost
-  
+- Base Sequence diagrams: Session history, Time setting, Connection lost  
+
 Tina:
 - Use cases: 1.4, 2, 3
 - Sequence diagrams
@@ -42,6 +42,7 @@ Yanwei:
 - Some EEG code
 - Timer code
 - Time and Date
+
   
 ## Files Included in this project
 Header files:
@@ -83,6 +84,7 @@ Documents:
 - *TraceabilityMatrix.pdf*: Traceability matrix for the system
 - *Readme.txt*: Explanation of files included in the project, info of group members
 
+
 ## Work procedure
 Week 1:
 - Use cases, UML class diagram draft
@@ -100,7 +102,19 @@ Week 4-5:
 - Update all necessary diagrams, textual explanation of the code, readme file
 - Code update
 
-## Explanation
+
+## Explanation of Design Decision
+
+- Qt Framework: Utilizing Qt components such as QWidget(creating GUI components), QTimer(timing-related task), QListWidget(Managing lists of items with GUI) for developing the application.
+
+- Modular Structure: Readability and maintainability are enhanced by having distinct methods for UI updates, calculations, functionality logics, and emergency handling. This allows easier modifications.
+
+- Safety features: Dealing with issues like device disconnection or out of battery is a practical part of the system design.
+
+- Adaptive UI controls: Dynamic enabling and disabling of controls based on the system's state, such as disabling menu selections during treatment or preventing user interactions when the device is out of battery, ensure realistic opertions and sensible interactions for users.
+ 
+- Real-time Visualization: Using QWidget, QTimer for real-time visualization of the timer that displays the remaining time for the session. This provides immediate visual feedback which makes the simulation more intuitive and engaging.
+
 
 ## Instruction to run the code
 Open folder in Qt, open mainwindow.cpp and run
