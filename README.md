@@ -78,7 +78,7 @@ Others:
 - neuraset_logs.txt (created after running the program)
   
 Documents:
-- *Diagrams.pd*: All diagrams required for the project
+- *Diagrams.pdf*: All diagrams required for the project
 - *Use Case.pdf*: Use cases for the system
 - *TraceabilityMatrix.pdf*: Traceability matrix for the system
 - *Readme.txt*: Explanation of files included in the project, info of group members
