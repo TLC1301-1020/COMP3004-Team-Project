@@ -11,16 +11,16 @@ COMP 3004 Final project 2024 Winter
 ## Breakdown of work
 Karthiga:
 - Use cases: 1.1, 1.2, 1.3
-- Base Sequence diagrams: Session history, Time setting, Connection lost  
+- Base Sequence diagrams: Session history, Time setting, Connection Lost  
 
 Tina:
 - Use cases: 1.4, 2, 3
 - Sequence diagrams
 - Traceability Matrix
-- Readme
+- Readme, design explanation
 - State diagrams: Overall and EEG
-- Revise sequence diagrams
-- Revise class diagram
+- Revise Sequence diagrams
+- Revise Class diagram
   
 Isaac:
 - Some general planning
