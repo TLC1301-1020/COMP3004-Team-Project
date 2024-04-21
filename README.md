@@ -3,7 +3,7 @@ COMP 3004 Final project 2024 Winter
 
 
 ## Members of Group 21
-- Karthiga Balasubramaniam
+- Karthiga Balasubramaniam-100670854
 - Isaac Arneill - 101222972
 - Yanwei Su - 101209998
 - Tina Cao - 101158711
