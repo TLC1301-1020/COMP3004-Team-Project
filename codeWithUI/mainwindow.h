@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QTime>
+#include <QGraphicsScene>
 
 // Class
 #include "menu.h"
@@ -45,6 +46,12 @@ private:
     int currentTimerCount;
     QTimer *t = new QTimer();
 
+    QGraphicsScene *sceneNewSession;
+    QGraphicsScene *sceneTimer;
+
+
+    bool powerStatu = false;
+
 
     void initializeMainMenu(Menu*);
     void updateMenu(const QStringList);
@@ -57,6 +64,9 @@ private:
     void initializeTimer(QTimer*);
     void timePause(QTimer* t);
     void timeStop(QTimer* t);
+
+    //time and date
+    void timeAndDate();
 
 private slots:
     // main menu

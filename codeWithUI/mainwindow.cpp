@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Initialize the main operation
     mOp = new MainOperation();
 
+    //Initialize scene
     connect(ui->Button_Menu, &QPushButton::pressed, this, &MainWindow::navigateToMainMenu);
     connect(ui->Button_Direction_Up, &QPushButton::pressed, this, &MainWindow::navigateUpMenu);
     connect(ui->Button_Direction_Down, &QPushButton::pressed, this, &MainWindow::navigateDownMenu);
@@ -44,6 +45,11 @@ MainWindow::~MainWindow()
     delete logArea;
     delete widget;
     delete operationMenu;
+    delete sceneNewSession;
+    delete sceneTimer;
+    delete activeQListWidget;
+    delete t;
+
 }
 
 //initialize funciton (menu)
@@ -67,21 +73,23 @@ void MainWindow::initializeMainMenu(Menu* m) {
 // click power Button
 void MainWindow::clickStartButton(){
     if(mOp->getPowerStatu() == false){
+        powerStatu = true;
         QString contact = "QPushButton {background-color: rgb(26, 95, 180);}";
         ui->Light_Blue->setStyleSheet(contact);
-        QString treatment = "QPushButton {background-color: rgb(38, 162, 105);}";
-        ui->Light_Green->setStyleSheet(treatment);
-        QString discontact = "QPushButton {background-color: rgb(165, 29, 45);}";
-        ui->Light_Red->setStyleSheet(discontact);
+//        QString treatment = "QPushButton {background-color: rgb(38, 162, 105);}";
+//        ui->Light_Green->setStyleSheet(treatment);
+//        QString discontact = "QPushButton {background-color: rgb(165, 29, 45);}";
+//        ui->Light_Red->setStyleSheet(discontact);
         changeBatteryLevel(100.00);
         mOp->setPowerStatu(true);
     }else{
-       QString contact = "QPushButton {background-color: rgb(153, 193, 241);}";
+        powerStatu = false;
+        QString contact = "QPushButton {background-color: rgb(153, 193, 241);}";
         ui->Light_Blue->setStyleSheet(contact);
-        QString treatment = "QPushButton {background-color: rgb(143, 240, 164);}";
-        ui->Light_Green->setStyleSheet(treatment);
-        QString discontact = "QPushButton {background-color: rgb(246, 97, 81);}";
-        ui->Light_Red->setStyleSheet(discontact);
+//        QString treatment = "QPushButton {background-color: rgb(143, 240, 164);}";
+//        ui->Light_Green->setStyleSheet(treatment);
+//        QString discontact = "QPushButton {background-color: rgb(246, 97, 81);}";
+//        ui->Light_Red->setStyleSheet(discontact);
         ui->programViewWidget->setVisible(true);
         mOp->setPowerStatu(false);
     }
@@ -102,7 +110,7 @@ void MainWindow::updateMenu(const QStringList menuItems) {
 
 //Menu (if no power, system close)
 void MainWindow::navigateToMainMenu(){
-    if(mOp->getBattery() > 0.0) {
+    if(mOp->getBattery() > 0.0 && powerStatu == true) {
         qInfo("testMenu");
         updateMenu(operationMenu->getMenuItems());
         ui->programViewWidget->setVisible(false);
@@ -189,13 +197,19 @@ void MainWindow::initializeTimer(QTimer* t) {
 
 // updateTimer
 void MainWindow::updateTimer() {
-
-    QGraphicsScene *scene = new QGraphicsScene(this);
-    ui->List_View->setScene(scene);
+    sceneNewSession = new QGraphicsScene(this);
+    ui->List_View->setScene(sceneNewSession);
 
     if(currentTimerCount > 0){
         timeString = QString::number(currentTimerCount/60) + ":00";
-        scene->addText(timeString);
+        ui->List_View->scene()->clear();
+        sceneNewSession->addText(timeString);
+
+        int barValue = (currentTimerCount/1260) * 100;
+        qInfo("%d",barValue);
+        ui->progressBar->setValue(barValue);
+
+        ui->progressBar->setVisible(true);
         ui->scrollArea->setVisible(true);
         currentTimerCount = currentTimerCount - 60;
     }else{
@@ -270,13 +284,16 @@ void MainWindow::newSession() {
 
     changeBatteryLevel(mOp->getBattery() - 10.0);
 
+    ui->List_View->setVisible(true);
     ui->mainMenuListView->setVisible(false);
-    ui->userDateInput->setVisible(false);
+//    ui->userDateInput->setVisible(false);
 
     // make a new t
-    QTimer *tNew = new QTimer();
-    t = tNew;
-    initializeTimer(t);
+    if(mOp->getBattery() > 0){
+        t = new QTimer();
+        initializeTimer(t);
+
+    }
 
 }
 
@@ -310,14 +327,36 @@ void MainWindow::readLogs() {
     }
     ui->scrollArea->setWidget(widget);
     in.close();
-    //ui->programViewWidget->setVisible(true);
-    //ui->List_View->setVisible(false);
+
     ui->scrollArea->setVisible(true);
 
 }
 
 
+// time and date
+void MainWindow::timeAndDate(){
+    sceneTimer = new QGraphicsScene(this);
+    ui->List_View_2->setScene(sceneTimer);
+    ui->List_View_2->scene()->clear();
 
+    ui->mainMenuListView ->setVisible(false);
+    time_t startTreatmentTime;
+    time(&startTreatmentTime);
+
+    string timeinfo = ctime(&startTreatmentTime);
+    string infoForUser = "Current Time: ";
+    string currentTimeInfo = infoForUser + timeinfo;
+
+    QString QStringCurrentTimeInfo = QString::fromStdString(currentTimeInfo);
+
+    sceneTimer->addText(QStringCurrentTimeInfo);
+
+    ui->scrollArea->setVisible(true);
+    ui->List_View->setVisible(false);
+    ui->progressBar->setVisible(false);
+
+
+}
 // code core, control system
 void MainWindow::playButton() {
     if(menuState == true) {
@@ -339,24 +378,7 @@ void MainWindow::playButton() {
 
             case 3:
                 cout << "Time and Date..." << endl;
-                QGraphicsScene *scene = new QGraphicsScene(this);
-                ui->List_View->setScene(scene);
-
-                ui->mainMenuListView ->setVisible(false);
-                time_t startTreatmentTime;
-                time(&startTreatmentTime);
-
-                string timeinfo = ctime(&startTreatmentTime);
-                string infoForUser = "Current Time: ";
-                string currentTimeInfo = infoForUser + timeinfo;
-
-                QString QStringCurrentTimeInfo = QString::fromStdString(currentTimeInfo);
-
-                scene->addText(QStringCurrentTimeInfo);
-                ui->scrollArea->setVisible(true);
-                ui->userDateInput->setVisible(true);
-
-                // user input and change
+                timeAndDate();
 
 
             break;
