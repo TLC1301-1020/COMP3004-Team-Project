@@ -193,6 +193,8 @@ void MainWindow::initializeTimer(QTimer* t) {
 
     t->start(1000);
 
+    ui->progressBar->setValue(0);
+
 }
 
 // updateTimer
@@ -205,7 +207,8 @@ void MainWindow::updateTimer() {
         ui->List_View->scene()->clear();
         sceneNewSession->addText(timeString);
 
-        int barValue = (currentTimerCount/1260) * 100;
+        int barValue = ui->progressBar->value() + 5;
+        if(barValue > 100) barValue = 100;
         qInfo("%d",barValue);
         ui->progressBar->setValue(barValue);
 
