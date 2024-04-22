@@ -211,14 +211,16 @@ void MainWindow::updateTimer() {
         if(barValue > 100) barValue = 100;
         qInfo("%d",barValue);
         ui->progressBar->setValue(barValue);
-
         ui->progressBar->setVisible(true);
-        ui->scrollArea->setVisible(true);
+        ui->listviewwidget->setVisible(true);
         currentTimerCount = currentTimerCount - 60;
     }else{
         qInfo("Treatment Successful!");
         t->stop();
     }
+
+    ui ->programViewWidget->setVisible(false);
+    ui->mainMenuListView->setVisible(false);
 
 }
 
@@ -287,9 +289,6 @@ void MainWindow::newSession() {
 
     changeBatteryLevel(mOp->getBattery() - 10.0);
 
-    ui->List_View->setVisible(true);
-    ui->mainMenuListView->setVisible(false);
-//    ui->userDateInput->setVisible(false);
 
     // make a new t
     if(mOp->getBattery() > 0){
@@ -326,6 +325,10 @@ void MainWindow::readLogs() {
     ui->scrollArea->setWidget(widget);
     in.close();
 
+    ui->programViewWidget->setVisible(false);
+    ui->mainMenuListView->setVisible(false);
+    ui->listviewwidget->setVisible(false);
+
     ui->scrollArea->setVisible(true);
 
 }
@@ -334,10 +337,9 @@ void MainWindow::readLogs() {
 // time and date
 void MainWindow::timeAndDate(){
     sceneTimer = new QGraphicsScene(this);
-    ui->List_View_2->setScene(sceneTimer);
-    ui->List_View_2->scene()->clear();
+    ui->List_View->setScene(sceneTimer);
+    ui->List_View->scene()->clear();
 
-    ui->mainMenuListView ->setVisible(true);
     time_t startTreatmentTime;
     time(&startTreatmentTime);
 
@@ -349,9 +351,13 @@ void MainWindow::timeAndDate(){
 
     sceneTimer->addText(QStringCurrentTimeInfo);
 
-    ui->scrollArea->setVisible(false);
-    ui->List_View_2->setVisible(true);
+    ui->programViewWidget->setVisible(false);
+    ui->mainMenuListView->setVisible(false);
     ui->progressBar->setVisible(false);
+
+    ui->listviewwidget->setVisible(true);
+    ui->List_View->setVisible(true);
+
 
 
 }
