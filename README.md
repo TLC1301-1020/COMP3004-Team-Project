@@ -40,10 +40,10 @@ Yanwei:
 - Functions in mainwindow
 - Functions in menu
 - Some EEG code
-- Timer code
 - Time and Date
+- Test videos
 
-  
+
 ## Files Included in this project
 Header files:
 - Battery.h
