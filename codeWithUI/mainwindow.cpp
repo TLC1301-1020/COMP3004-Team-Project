@@ -304,11 +304,6 @@ void MainWindow::newSession() {
 
 // clisk logs
 void MainWindow::readLogs() {
-    QLayoutItem* tempItem;
-    while(logArea->count() != 0) {
-        tempItem = logArea->takeAt(0);
-        delete tempItem;
-    }
     delete logArea;
     delete widget;
 
@@ -342,7 +337,7 @@ void MainWindow::timeAndDate(){
     ui->List_View_2->setScene(sceneTimer);
     ui->List_View_2->scene()->clear();
 
-    ui->mainMenuListView ->setVisible(false);
+    ui->mainMenuListView ->setVisible(true);
     time_t startTreatmentTime;
     time(&startTreatmentTime);
 
@@ -354,14 +349,15 @@ void MainWindow::timeAndDate(){
 
     sceneTimer->addText(QStringCurrentTimeInfo);
 
-    ui->scrollArea->setVisible(true);
-    ui->List_View->setVisible(false);
+    ui->scrollArea->setVisible(false);
+    ui->List_View_2->setVisible(true);
     ui->progressBar->setVisible(false);
 
 
 }
 // code core, control system
 void MainWindow::playButton() {
+    //ui->List_View->scene()->clear()
     if(menuState == true) {
         menuState = false;
         int index = activeQListWidget->currentRow() + 1;

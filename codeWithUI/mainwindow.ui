@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
+    <width>855</width>
     <height>506</height>
    </rect>
   </property>
@@ -73,6 +73,65 @@
      <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(255, 255, 255);</string>
     </property>
+    <widget class="QWidget" name="listviewwidget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>291</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <widget class="QGraphicsView" name="List_View_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>291</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(243, 243, 243);</string>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="List_View">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>291</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(243, 243, 243);</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>118</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QPushButton" name="Button_Pause">
     <property name="geometry">
@@ -273,7 +332,7 @@ selection-background-color: rgb(122, 0, 0)</string>
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>460</x>
       <y>150</y>
       <width>311</width>
       <height>191</height>
@@ -297,68 +356,6 @@ selection-background-color: rgb(122, 0, 0)</string>
        <height>189</height>
       </rect>
      </property>
-     <widget class="QGraphicsView" name="List_View">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>301</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(243, 243, 243);</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>291</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <widget class="QGraphicsView" name="List_View_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>291</width>
-         <height>191</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(243, 243, 243);</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>120</y>
-        <width>118</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="value">
-       <number>24</number>
-      </property>
-     </widget>
-     <zorder>widget</zorder>
-     <zorder>List_View</zorder>
-     <zorder>progressBar</zorder>
     </widget>
    </widget>
    <widget class="QProgressBar" name="batteryLevelBar">
@@ -430,7 +427,7 @@ background-color: rgb(0, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>459</width>
+     <width>855</width>
      <height>22</height>
     </rect>
    </property>
